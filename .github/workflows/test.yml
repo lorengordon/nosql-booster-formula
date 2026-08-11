@@ -1,4 +1,4 @@
-name: Run test jobs
+name: Run salt tests
 on:
   pull_request:
 
@@ -8,10 +8,10 @@ concurrency:
 
 jobs:
   test:
-    uses: plus3it/actions-workflows/.github/workflows/test.yml@ddd67e99878a285f728de398c1116151c2d7791a
+    uses: plus3it/actions-workflows/.github/workflows/test.yml@0a03f75193a010b3532cc90e8ad0b15a09ed33c1
 
   linux:
-    uses: plus3it/actions-workflows/.github/workflows/test-salt-linux.yml@ddd67e99878a285f728de398c1116151c2d7791a
+    uses: plus3it/actions-workflows/.github/workflows/test-salt-linux.yml@0a03f75193a010b3532cc90e8ad0b15a09ed33c1
     strategy:
       matrix:
         os_version:
@@ -20,14 +20,14 @@ jobs:
         salt_state:
           - nosql-booster
         salt_pillar_root:
-          - ./tests/pillar/test-linux-main
+          - ./tests/pillar/nosql-booster
     with:
       salt-os-version: ${{ matrix.os_version }}
       salt-state: ${{ matrix.salt_state }}
       salt-pillar-root: ${{ matrix.salt_pillar_root }}
 
   windows:
-    uses: plus3it/actions-workflows/.github/workflows/test-salt-windows.yml@ddd67e99878a285f728de398c1116151c2d7791a
+    uses: plus3it/actions-workflows/.github/workflows/test-salt-windows.yml@0a03f75193a010b3532cc90e8ad0b15a09ed33c1
     strategy:
       matrix:
         os_version:
