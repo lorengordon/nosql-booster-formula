@@ -1,4 +1,4 @@
-name: Run test jobs
+name: Run salt tests
 on:
   pull_request:
 
